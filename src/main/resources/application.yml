@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: class-booking-system
+  profiles:
+    active: dev
