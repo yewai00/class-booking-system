@@ -9,8 +9,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +22,7 @@ public class AuthApiController {
 
     @PostMapping("/auth/register")
     @Operation(summary = "Signup User Api")
-    public ResponseEntity<ApiResponse<UserResponse>> signupUser(@RequestBody UserRequest request) {
+    public ResponseEntity<ApiResponse<UserResponse>> signupUser(@Valid @RequestBody UserRequest request) {
         var userResponse = userService.createUser(request);
         return ResponseEntity.ok(ApiResponse.success(userResponse));
     }
@@ -51,7 +49,7 @@ public class AuthApiController {
 
     @PostMapping("/auth/reset-password")
     @Operation(summary = "Password reset Api")
-    public ResponseEntity<ApiResponse<String>> resetPassword(@RequestBody PasswordResetRequest request) {
+    public ResponseEntity<ApiResponse<String>> resetPassword(@Valid @RequestBody PasswordResetRequest request) {
         userService.resetPassword(request);
         return ResponseEntity.ok(ApiResponse.success("Password Reset Successfully"));
     }
