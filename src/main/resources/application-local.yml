@@ -1,44 +1,26 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/your_database_name
-    username: root
-    password: 123
+    url: jdbc:postgresql://localhost:5432/classBooking
+    username: classDev
+    password: p422wordDev
     driver-class-name: org.postgresql.Driver
-    hikari:
-      maximum-pool-size: 10
-      minimum-idle: 5
-      idle-timeout: 30000
-      max-lifetime: 1800000
-      connection-timeout: 20000
-      validation-timeout: 5000
-      leak-detection-threshold: 2000
-      pool-name: MyHikariCP
-      connection-test-query: SELECT 1
-  jpa:
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-    hibernate:
-      ddl-auto: update
 logging:
   file:
-    name: ./log/mediearth-t2k.log
+    name: ./log/class-booking-api.log
     max-history: 10
 application:
   security:
     jwt:
-      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
-      expiration: 8640000
+      secret-key: D3EA54FFD9B3CC700FA31C837709B8FD33831EC6F81A3A644293D51B0E051F22
+      expiration: 900000
       refresh-token:
-        expiration: 604800000
-swagger:
-  username: ENC(95ubgY4i8TX5mc5j7VcEcw==)
-  password: ENC(dmN45z3Bry36AolSFAfANyJbYhgevXf3)
+        expiration: 1800000
 springdoc:
   swagger-ui:
     doc-expansion: none
     tags-sorter: alpha
 server:
-  port: 8091
+  port: 8080
+api:
+  version: v1.0
 
